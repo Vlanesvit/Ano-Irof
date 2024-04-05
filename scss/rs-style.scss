@@ -1,6 +1,7 @@
 // Подключение шрифтов ===========================================================================================================================================================================================================================================================================
 //&display=swap - добавить при подключении через плагин
-@import url(https://fonts.googleapis.com/css?family=Mulish:300,regular,500,600,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Manrope:regular,500,600,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Raleway:regular,700&display=swap);
 
 // Подключить если есть локальные файлы шрифтов
 // @import "fonts/fonts";
@@ -11,20 +12,21 @@
 
 // Парамерты по умолчанию ==============================================================================================================================================================================================================================================================================
 // Шрифт и размер
-$fontFamily: "Mulish", sans-serif;
+$fontFamily: "Manrope", sans-serif;
 $fontSize: 14px;
 
 // Основные цвета
-$accentColor: #ff1812;
-$fontColor: #000;
-$bgColor: #fff;
+$accentColor: #248af2;
+$fontColor: #111;
+$bgColor: #f3f3f3;
 
 // Минимальная ширина страницы
 $minWidth: 320px;
 // Ширина макета
 $maxWidth: 1920px;
 // Ширина ограничивающего контейнера (ширина контейнера по макету + раддинги)
-$maxWidthContainer: calc(1578px + (20px * 2));
+$paddingContainer: 16px;
+$maxWidthContainer: calc(1480px + ($paddingContainer * 2));
 
 // Брейк-поинты
 $pc: 1169.98px; // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
@@ -54,7 +56,11 @@ body {
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+	// overflow: hidden;
+
+	@media (max-width: 991.98px) {
+		overflow: hidden;
+	}
 
 	// Прижимаем footer
 	> main {
@@ -72,39 +78,14 @@ body {
 	margin: 0 auto;
 	width: 100%;
 	max-width: $maxWidthContainer;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: $paddingContainer;
+	padding-right: $paddingContainer;
 
 	@media (max-width: 991.98px) {
 		max-width: 768px;
 	}
 
-	@media (max-width: 767.98px) {
-		max-width: 375px;
-	}
-	
 	[class*="__container"] {
-		padding: 0;
-		max-width: 100%;
-	}
-}
-
-.container {
-	margin: 0 auto;
-	width: 100%;
-	max-width: 1188px;
-	padding-left: 20px;
-	padding-right: 20px;
-
-	@media (max-width: 991.98px) {
-		max-width: 768px;
-	}
-
-	@media (max-width: 767.98px) {
-		max-width: 100%;
-	}
-
-	.container {
 		padding: 0;
 		max-width: 100%;
 	}

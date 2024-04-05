@@ -29,8 +29,7 @@ function menuFunction() {
 	function menuInit() {
 		menus.forEach(menu => {
 			// Все пункты
-			const menuItem = menu.querySelectorAll('.menu__list li');
-			const menuItemLink = menu.querySelectorAll('.menu__list li > a');
+			const menuItem = menu.querySelectorAll('.menu__body .menu__list li');
 
 			// Все пункты с выпадающим меню
 			const menuItemDropdowns = menu.querySelectorAll('.menu__list .menu__dropdown');
@@ -53,7 +52,7 @@ function menuFunction() {
 			const menuItemDropdownsMenuThree = menu.querySelectorAll('.menu__list > .menu__dropdown > .menu__dropdown-list > .menu__dropdown > .menu__dropdown-list > .menu__dropdown > .menu__dropdown-list > .menu__dropdown > .menu__dropdown-list');
 
 			// Добавляем иконки в пункты с выпадающим меню
-			menuItemDropdowns.forEach(item => {
+			menuItem.forEach(item => {
 				const menuLink = item.querySelector('a');
 				let icon = document.createElement('i');
 				icon.classList.add('menu__dropdown-arrow')
@@ -233,7 +232,7 @@ function headerFixed() {
 	})
 	window.addEventListener('resize', function () {
 		headerClassAdd()
-		
+
 		if (!header.classList.contains('_header-transparent')) {
 			headerTag.style.height = header.clientHeight + 'px';
 		}

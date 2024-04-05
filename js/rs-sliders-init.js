@@ -5,13 +5,13 @@
 // Инициализация слайдеров
 function initSliders() {
 	// Перечень слайдеров
-	if (document.querySelector('.rs-slider__slider')) {
-		const sliderBlocks = document.querySelectorAll('.rs-slider__slider');
+	if (document.querySelector('.rs-news__slider')) {
+		const sliderBlocks = document.querySelectorAll('.rs-news__slider');
 
 		sliderBlocks.forEach(slider => {
-			const arrowPrev = slider.querySelector('.rs-slider__button-prev');
-			const arrowNext = slider.querySelector('.rs-slider__button-next');
-			const pagination = slider.querySelector('.rs-slider__pagination');
+			const arrowPrev = slider.querySelector('.rs-news__button-prev');
+			const arrowNext = slider.querySelector('.rs-news__button-next');
+			const pagination = slider.querySelector('.rs-news__pagination');
 
 			const swiperMain = new Swiper(slider, {
 				// // Автопрокрутка
@@ -51,7 +51,7 @@ function initSliders() {
 				loop: true,
 
 				// Анимация переключения
-				// effect: 'fade',
+				effect: 'fade',
 
 				// Курсор перетаскивания
 				grabCursor: true,
@@ -81,99 +81,84 @@ function initSliders() {
 		});
 	}
 
-	if (document.querySelector('.rs-services__slider')) {
-		// До этой ширины слайдер будет активным
-		const breakpoint = window.matchMedia('(min-width: 991.98px)');
+	if (document.querySelector('.rs-slider-block__slider')) {
+		const sliderBlocks = document.querySelectorAll('.rs-slider-block__slider');
 
-		let sliderSwiper;
+		sliderBlocks.forEach(slider => {
+			const arrowPrev = slider.querySelector('.rs-slider-block__button-prev');
+			const arrowNext = slider.querySelector('.rs-slider-block__button-next');
+			const pagination = slider.querySelector('.rs-slider-block__pagination');
 
-		const breakpointChecker = function () {
-			if (breakpoint.matches === true) {
-				// Выключаем слайдер
-				if (sliderSwiper !== undefined) sliderSwiper.destroy(true, true);
-				return;
-			} else if (breakpoint.matches === false) {
-				// Включаем слайдер
-				return enableSwiper();
-			}
-		};
+			const swiperMain = new Swiper(slider, {
+				// // Автопрокрутка
+				// autoplay: {
+				// 	// Пауза между прокруткой
+				// 	delay: 10000,
+				// 	// Закончить на последнем слайде
+				// 	stopOnLastSlide: false,
+				// 	// Отключить после ручного переключения
+				// 	disableOnInteraction: false,
+				// },
 
-		// Инициализация слайдера
-		const enableSwiper = function () {
-			const sliderBlocks = document.querySelectorAll('.rs-services__slider');
+				// Обновить свайпер
+				// при изменении элементов слайдера
+				observer: true,
+				// при изменении родительских элементов слайдера
+				observeParents: true,
+				// при изменении дочерних элементов слайдера
+				observeSlideChildren: true,
 
-			sliderBlocks.forEach(slider => {
-				const arrowNext = slider.querySelector('.rs-services__button-next');
-				const arrowPrev = slider.querySelector('.rs-services__button-prev');
-				const pagination = slider.querySelector('.rs-services__pagination');
+				// Скорость смены слайдов
+				speed: 500,
 
-				// Перечень слайдеров
-				sliderSwiper = new Swiper(slider, {
-					// // Автопрокрутка
-					// autoplay: {
-					// 	// Пауза между прокруткой
-					// 	delay: 10000,
-					// 	// Закончить на последнем слайде
-					// 	stopOnLastSlide: false,
-					// 	// Отключить после ручного переключения
-					// 	disableOnInteraction: false,
-					// },
+				// Включение/отключение
+				// перетаскивание на ПК
+				simulateTouch: true,
+				allowTouchMove: true,
+				// Чувствительность свайпа
+				touchRadio: 1,
+				// Угол срабатывания свайпа/перетаскивания
+				touchAngle: 45,
 
-					// Обновить свайпер
-					// при изменении элементов слайдера
-					observer: true,
-					// при изменении родительских элементов слайдера
-					observeParents: true,
-					// при изменении дочерних элементов слайдера
-					observeSlideChildren: true,
+				// Цикличность слайдера
+				loop: true,
 
-					// Скорость смены слайдов
-					speed: 500,
+				// Курсор перетаскивания
+				grabCursor: true,
 
-					// Включение/отключение
-					// перетаскивание на ПК
-					simulateTouch: true,
-					allowTouchMove: true,
-					// Чувствительность свайпа
-					touchRadio: 1,
-					// Угол срабатывания свайпа/перетаскивания
-					touchAngle: 45,
+				// Стрелки
+				navigation: {
+					prevEl: arrowPrev,
+					nextEl: arrowNext,
+				},
 
-					// Цикличность слайдера
-					// loop: true,
+				// Пагинация
+				pagination: {
+					el: pagination,
+					clickable: true,
+				},
 
-					// Курсор перетаскивания
-					grabCursor: true,
-
-					// Стрелки
-					navigation: {
-						prevEl: arrowPrev,
-						nextEl: arrowNext,
+				// Брекпоинты (адаптив)
+				breakpoints: {
+					320: {
+						slidesPerView: 1.215,
+						spaceBetween: 24,
 					},
-
-					// Пагинация
-					pagination: {
-						el: pagination,
-						clickable: true,
+					539.98: {
+						slidesPerView: 2,
+						spaceBetween: 30,
 					},
-
-					// Брекпоинты (адаптив)
-					breakpoints: {
-						320: {
-							slidesPerView: 1.24,
-							spaceBetween: 5,
-						},
-						767.98: {
-							slidesPerView: 2,
-							spaceBetween: 5,
-						},
+					767.98: {
+						slidesPerView: 3,
+						spaceBetween: 30,
 					},
-				});
+					1439.98: {
+						slidesPerView: 4,
+						spaceBetween: 30,
+					},
+				},
 			});
-		};
-
-		breakpoint.addListener(breakpointChecker);
-		breakpointChecker();
+		});
 	}
 
 	if (document.querySelector('.rs-project__slider')) {
@@ -231,268 +216,26 @@ function initSliders() {
 				pagination: {
 					el: pagination,
 					clickable: true,
+					type: 'progressbar'
 				},
 
 				// Брекпоинты (адаптив)
 				breakpoints: {
 					320: {
-						slidesPerView: 1,
-						spaceBetween: 5,
-					},
-					767.98: {
-						slidesPerView: 2,
-						spaceBetween: 5,
-					},
-				},
-			});
-		});
-	}
-
-	if (document.querySelector('.rs-steps__slider')) {
-		// До этой ширины слайдер будет активным
-		const breakpoint = window.matchMedia('(min-width: 991.98px)');
-
-		let sliderSwiper;
-
-		const breakpointChecker = function () {
-			if (breakpoint.matches === true) {
-				// Выключаем слайдер
-				if (sliderSwiper !== undefined) sliderSwiper.destroy(true, true);
-				return;
-			} else if (breakpoint.matches === false) {
-				// Включаем слайдер
-				return enableSwiper();
-			}
-		};
-
-		// Инициализация слайдера
-		const enableSwiper = function () {
-			const sliderBlocks = document.querySelectorAll('.rs-steps__slider');
-
-			sliderBlocks.forEach(slider => {
-				const arrowNext = slider.querySelector('.rs-steps__button-next');
-				const arrowPrev = slider.querySelector('.rs-steps__button-prev');
-				const pagination = slider.querySelector('.rs-steps__pagination');
-
-				// Перечень слайдеров
-				sliderSwiper = new Swiper(slider, {
-					// // Автопрокрутка
-					// autoplay: {
-					// 	// Пауза между прокруткой
-					// 	delay: 10000,
-					// 	// Закончить на последнем слайде
-					// 	stopOnLastSlide: false,
-					// 	// Отключить после ручного переключения
-					// 	disableOnInteraction: false,
-					// },
-
-					// Обновить свайпер
-					// при изменении элементов слайдера
-					observer: true,
-					// при изменении родительских элементов слайдера
-					observeParents: true,
-					// при изменении дочерних элементов слайдера
-					observeSlideChildren: true,
-
-					// Скорость смены слайдов
-					speed: 500,
-
-					// Включение/отключение
-					// перетаскивание на ПК
-					simulateTouch: true,
-					allowTouchMove: true,
-					// Чувствительность свайпа
-					touchRadio: 1,
-					// Угол срабатывания свайпа/перетаскивания
-					touchAngle: 45,
-
-					// Цикличность слайдера
-					// loop: true,
-
-					// Курсор перетаскивания
-					grabCursor: true,
-
-					// Стрелки
-					navigation: {
-						prevEl: arrowPrev,
-						nextEl: arrowNext,
-					},
-
-					// Пагинация
-					pagination: {
-						el: pagination,
-						clickable: true,
-					},
-
-					// Брекпоинты (адаптив)
-					breakpoints: {
-						320: {
-							slidesPerView: 1.23,
-							spaceBetween: 5,
-						},
-						767.98: {
-							slidesPerView: 2,
-							spaceBetween: 5,
-						},
-					},
-				});
-			});
-		};
-
-		breakpoint.addListener(breakpointChecker);
-		breakpointChecker();
-	}
-
-	if (document.querySelector('.rs-team__slider')) {
-		const sliderBlocks = document.querySelectorAll('.rs-team__slider');
-
-		sliderBlocks.forEach(slider => {
-			const arrowPrev = slider.querySelector('.rs-team__button-prev');
-			const arrowNext = slider.querySelector('.rs-team__button-next');
-			const pagination = slider.querySelector('.rs-team__pagination');
-
-			const swiperMain = new Swiper(slider, {
-				// // Автопрокрутка
-				// autoplay: {
-				// 	// Пауза между прокруткой
-				// 	delay: 10000,
-				// 	// Закончить на последнем слайде
-				// 	stopOnLastSlide: false,
-				// 	// Отключить после ручного переключения
-				// 	disableOnInteraction: false,
-				// },
-
-				// Обновить свайпер
-				// при изменении элементов слайдера
-				observer: true,
-				// при изменении родительских элементов слайдера
-				observeParents: true,
-				// при изменении дочерних элементов слайдера
-				observeSlideChildren: true,
-
-				// Скорость смены слайдов
-				speed: 500,
-
-				// Включение/отключение
-				// перетаскивание на ПК
-				simulateTouch: true,
-				allowTouchMove: true,
-				// Чувствительность свайпа
-				touchRadio: 1,
-				// Угол срабатывания свайпа/перетаскивания
-				touchAngle: 45,
-
-				// Цикличность слайдера
-				loop: true,
-
-				// Курсор перетаскивания
-				grabCursor: true,
-
-				// Стрелки
-				navigation: {
-					prevEl: arrowPrev,
-					nextEl: arrowNext,
-				},
-
-				// Пагинация
-				pagination: {
-					el: pagination,
-					clickable: true,
-				},
-
-				// Брекпоинты (адаптив)
-				breakpoints: {
-					320: {
-						slidesPerView: 1,
-						spaceBetween: 5,
-					},
-					767.98: {
-						slidesPerView: 2,
-						spaceBetween: 5,
-					},
-					991.98: {
-						slidesPerView: 6,
-						spaceBetween: 30,
-					},
-				},
-			});
-		});
-	}
-
-	if (document.querySelector('.rs-reviews__slider')) {
-		const sliderBlocks = document.querySelectorAll('.rs-reviews__slider');
-
-		sliderBlocks.forEach(slider => {
-			const arrowPrev = slider.querySelector('.rs-reviews__button-prev');
-			const arrowNext = slider.querySelector('.rs-reviews__button-next');
-			const pagination = slider.querySelector('.rs-reviews__pagination');
-
-			const swiperMain = new Swiper(slider, {
-				// // Автопрокрутка
-				// autoplay: {
-				// 	// Пауза между прокруткой
-				// 	delay: 10000,
-				// 	// Закончить на последнем слайде
-				// 	stopOnLastSlide: false,
-				// 	// Отключить после ручного переключения
-				// 	disableOnInteraction: false,
-				// },
-
-				// Обновить свайпер
-				// при изменении элементов слайдера
-				observer: true,
-				// при изменении родительских элементов слайдера
-				observeParents: true,
-				// при изменении дочерних элементов слайдера
-				observeSlideChildren: true,
-
-				// Скорость смены слайдов
-				speed: 500,
-
-				// Включение/отключение
-				// перетаскивание на ПК
-				simulateTouch: true,
-				allowTouchMove: true,
-				// Чувствительность свайпа
-				touchRadio: 1,
-				// Угол срабатывания свайпа/перетаскивания
-				touchAngle: 45,
-
-				// Цикличность слайдера
-				loop: true,
-
-				// Курсор перетаскивания
-				grabCursor: true,
-
-				// Стрелки
-				navigation: {
-					prevEl: arrowPrev,
-					nextEl: arrowNext,
-				},
-
-				// Пагинация
-				pagination: {
-					el: pagination,
-					clickable: true,
-				},
-
-				// Брекпоинты (адаптив)
-				breakpoints: {
-					320: {
-						slidesPerView: 1.5,
-						spaceBetween: 5,
+						slidesPerView: 1.215,
+						spaceBetween: 24,
 					},
 					539.98: {
 						slidesPerView: 2,
-						spaceBetween: 5,
+						spaceBetween: 30,
 					},
 					767.98: {
 						slidesPerView: 3,
 						spaceBetween: 30,
-					},
-					991.98: {
-						slidesPerView: 4,
-						spaceBetween: 30,
+					}, 
+					1439.98: {
+						slidesPerView: 3,
+						spaceBetween: 65,
 					},
 				},
 			});
