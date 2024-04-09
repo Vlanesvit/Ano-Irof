@@ -88,6 +88,19 @@
 						}
 					}
 				}
+				.rs-slider-block__img {
+					img {
+						&:first-child {
+							opacity: 1;
+							visibility: visible;
+						}
+
+						&:last-child {
+							opacity: 0;
+							visibility: hidden;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -147,7 +160,7 @@
 			@media (max-width: 991.98px) {
 				padding: 3.5px 16px;
 				font-size: 12px;
-			letter-spacing: 0px;
+				letter-spacing: 0px;
 			}
 
 			&.rs-slider-block__tags-blue {
@@ -230,15 +243,16 @@
 			position: absolute;
 			top: 0;
 			left: 0;
+			transition: all 0.3s ease 0s;
 
 			&:first-child {
-				opacity: 1;
-				visibility: visible;
+				opacity: 0;
+				visibility: hidden;
 			}
 
 			&:last-child {
-				opacity: 0;
-				visibility: hidden;
+				opacity: 1;
+				visibility: visible;
 			}
 		}
 	}

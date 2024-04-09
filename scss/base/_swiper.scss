@@ -94,6 +94,12 @@
 	justify-content: center;
 	border-radius: 50%;
 	transition: all 0.3s ease 0s;
+	background-color: transparent;
+	border: 1px solid #000;
+
+	._white-nav & {
+		border-color: #fff;
+	}
 
 	@media (max-width: 1439.98px) {
 		width: 45px;
@@ -120,7 +126,34 @@
 		}
 
 		path {
+			stroke: #000;
 			transition: all 0.3s ease 0s;
+
+			._white-nav & {
+				stroke: #fff;
+			}
+		}
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #248af2;
+			border-color: #248af2;
+
+			._white-nav & {
+				background-color: #fff;
+				border-color: #fff;
+			}
+
+			svg {
+				path {
+					stroke: #fff;
+
+					._white-nav & {
+						stroke: #000;
+					}
+				}
+			}
 		}
 	}
 }
@@ -129,22 +162,6 @@
 .swiper-rtl .swiper-button-next {
 	left: 0px;
 	right: auto;
-	background-color: transparent;
-	border: 1px solid #000;
-
-	._white-nav & {
-		border-color: #fff;
-	}
-
-	svg {
-		path {
-			stroke: #000;
-
-			._white-nav & {
-				stroke: #fff;
-			}
-		}
-	}
 
 	@media (any-hover: hover) {
 		&:hover {
@@ -166,23 +183,6 @@
 .swiper-rtl .swiper-button-prev {
 	right: 0px;
 	left: auto;
-	background-color: #248af2;
-	border-color: #248af2;
-
-	._white-nav & {
-		background-color: #fff;
-		border-color: #fff;
-	}
-
-	svg {
-		path {
-			stroke: #fff;
-
-			._white-nav & {
-				stroke: #000;
-			}
-		}
-	}
 
 	@media (any-hover: hover) {
 		&:hover {

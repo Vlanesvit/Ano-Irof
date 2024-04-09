@@ -648,6 +648,12 @@ textarea.rs-input {
   border-radius: 50%;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  background-color: transparent;
+  border: 1px solid #000;
+}
+._white-nav .swiper-button-next,
+._white-nav .swiper-button-prev {
+  border-color: #fff;
 }
 @media (max-width: 1439.98px) {
   .swiper-button-next,
@@ -684,28 +690,39 @@ textarea.rs-input {
 }
 .swiper-button-next svg path,
 .swiper-button-prev svg path {
+  stroke: #000;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+}
+._white-nav .swiper-button-next svg path,
+._white-nav .swiper-button-prev svg path {
+  stroke: #fff;
+}
+@media (any-hover: hover) {
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background-color: #248af2;
+    border-color: #248af2;
+  }
+  ._white-nav .swiper-button-next:hover,
+  ._white-nav .swiper-button-prev:hover {
+    background-color: #fff;
+    border-color: #fff;
+  }
+  .swiper-button-next:hover svg path,
+  .swiper-button-prev:hover svg path {
+    stroke: #fff;
+  }
+  ._white-nav .swiper-button-next:hover svg path,
+  ._white-nav .swiper-button-prev:hover svg path {
+    stroke: #000;
+  }
 }
 
 .swiper-button-prev,
 .swiper-rtl .swiper-button-next {
   left: 0px;
   right: auto;
-  background-color: transparent;
-  border: 1px solid #000;
-}
-._white-nav .swiper-button-prev,
-._white-nav .swiper-rtl .swiper-button-next {
-  border-color: #fff;
-}
-.swiper-button-prev svg path,
-.swiper-rtl .swiper-button-next svg path {
-  stroke: #000;
-}
-._white-nav .swiper-button-prev svg path,
-._white-nav .swiper-rtl .swiper-button-next svg path {
-  stroke: #fff;
 }
 @media (any-hover: hover) {
   .swiper-button-prev:hover svg path:first-child,
@@ -726,21 +743,6 @@ textarea.rs-input {
 .swiper-rtl .swiper-button-prev {
   right: 0px;
   left: auto;
-  background-color: #248af2;
-  border-color: #248af2;
-}
-._white-nav .swiper-button-next,
-._white-nav .swiper-rtl .swiper-button-prev {
-  background-color: #fff;
-  border-color: #fff;
-}
-.swiper-button-next svg path,
-.swiper-rtl .swiper-button-prev svg path {
-  stroke: #fff;
-}
-._white-nav .swiper-button-next svg path,
-._white-nav .swiper-rtl .swiper-button-prev svg path {
-  stroke: #000;
 }
 @media (any-hover: hover) {
   .swiper-button-next:hover svg path:first-child,
